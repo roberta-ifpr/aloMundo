@@ -13,9 +13,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handle(Exception e) {
         /*
+         * enviando mensagem no corpo de uma pagina html
          * return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
          * .body("Erro: " + e.getMessage());
          */
+
+        // redirecionando para uma página externa
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "https://http.cat/404.jpg");
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
